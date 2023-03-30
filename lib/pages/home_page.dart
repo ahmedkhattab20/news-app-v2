@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
     weatherData = Provider.of<WeatherProvider>(context).weatherData;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange,
+        // backgroundColor: Colors.orange,
         actions: [
           IconButton(
               onPressed: () {
@@ -45,7 +45,20 @@ class _HomePageState extends State<HomePage> {
             )
           : Center(
               child: Container(
-                color: Colors.orangeAccent,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      weatherData!.getColor(),
+                      weatherData!.getColor()[300]!,
+                      weatherData!.getColor()[100]!
+
+                    ],begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter
+
+                  )
+
+                ),
+                //color: Colors.orangeAccent,
                 child: Column(
                   children: [
                     Spacer(
@@ -56,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                       style:
                           TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
                     ),
-                    Text('Ubdated 12-8-2020'),
+                    Text('Updated 12-8-2020'),
                     Spacer(
                       flex: 1,
                     ),
